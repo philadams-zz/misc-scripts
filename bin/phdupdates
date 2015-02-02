@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+"""
+`phdupdates` Given a .csv download of the [IS PhD
+Updates](philadams.net/is-phd-updates) form, pretty-print the updates for
+`pbcopy`ing into the email body.
+"""
+
+import csv
+import io
+import sys
+
+
+if __name__ == '__main__':
+    updates = []
+    lines = csv.reader(io.open(sys.argv[1], 'rU'))
+    next(lines)  # skip header (timestamp, update, name)
+    fields = ('when', 'update', 'name')
+    for line in lines:
+        line = dict(zip(fields, line))
+        print('%s %s\n' % (line['name'], line['update'].strip().replace('\n', ' ')))
