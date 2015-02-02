@@ -7,3 +7,4 @@ frequently, but don't really have a more logical home.
 - `phdupdates` Given a .csv download of the [IS PhD
   Updates](philadams.net/is-phd-updates) form, pretty-print the updates for
   `pbcopy`ing into the email body.
+- `agefrombday` Given a birthdate, figure out how old that person is today.
