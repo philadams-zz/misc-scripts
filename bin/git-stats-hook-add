@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+curl -s https://raw.githubusercontent.com/IonicaBizau/git-stats/master/scripts/init-git-post-commit | bash
+git init
