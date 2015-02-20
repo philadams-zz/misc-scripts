@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+"""
+`pip-home` Open the project homepage for a given [pip](https://pip.pypa.io)
+package.
+"""
+
+import sys
+import webbrowser
+
+import requests
+
+PYPI_API = 'https://pypi.python.org/pypi/{}/json'
+
+
+if __name__ == '__main__':
+    packages = sys.argv[1:]
+    if not packages:
+        print('Usage: pip-home <package-name>...')
+    for package in packages:
+        req = requests.get(PYPI_API.format(package))
+        data = req.json()
+        url = data['info']['home_page']
+        print('Opening homepage for {}\n\t{}'.format(package, url))
+        webbrowser.open_new_tab(url)
