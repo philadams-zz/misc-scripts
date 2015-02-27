@@ -11,15 +11,23 @@ import webbrowser
 import requests
 
 PYPI_API = 'https://pypi.python.org/pypi/{}/json'
+PYPI_FLAG = '--pypi'
+
+use_pypi = False
 
 
 if __name__ == '__main__':
     packages = sys.argv[1:]
+    if PYPI_FLAG in packages:
+        use_pypi = True
+        packages.pop(packages.index(PYPI_FLAG))
     if not packages:
         print('Usage: pip-home <package-name>...')
     for package in packages:
         req = requests.get(PYPI_API.format(package))
         data = req.json()
         url = data['info']['home_page']
+        if use_pypi:
+            url = data['info']['package_url']
         print('Opening homepage for {}\n\t{}'.format(package, url))
         webbrowser.open_new_tab(url)

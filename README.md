@@ -12,4 +12,4 @@ frequently, but don't really have a more logical home.
   [git-stats](https://github.com/IonicaBizau/git-stats)'s local db is updated
   automagically.
 - `pip-home` Open the project homepage for a given [pip](https://pip.pypa.io)
-  package.
+  package. Optionally open the PyPi page instead with the `--pypi` flag.
